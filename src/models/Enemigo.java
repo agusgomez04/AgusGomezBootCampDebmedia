@@ -17,4 +17,9 @@ public class Enemigo {
     public int getVida() {
         return vida;
     }
+
+    //Metodos
+    public int ataqueEnemigo(){
+        return vida * 5;
+    }
 }
