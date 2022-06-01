@@ -24,7 +24,7 @@ public class Mago extends Guerrero {
 
     @Override
     public double ataqueBasico() {
-        return 0;
+        return 25 * 8;
     }
 
     @Override
