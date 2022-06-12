@@ -101,6 +101,7 @@ public class Metodos {
     }
 
     public static void cargarArma(Guerrero g, Arma a) {
+        // acá faltaria verificar si el guerrero tiene Arma, pero esta bien. En éste ejemplo claramente, ninguno se cargaba con arma.
         if ((g.getClass() == Berzerker.class) && (a.getClass() == Espada.class)) {
             ((Berzerker) g).setArmaBerzerker((Espada) a);
         } else if ((g.getClass() == Arquero.class) && (a.getClass() == Arco.class)) {
@@ -114,10 +115,21 @@ public class Metodos {
     }
 
     public static void equiparEjercito(List<Guerrero> listG, List<Arma> listA) {
+        /*
+        Esto funciona, pero te complicaste mucho, fijate que lo unico que cambia es el if.
+        Podrias haber usado una estructura de la siguiente manera, con los diferentes if consultando por la clase y era mas sencillo para vos.
+
+            for(Loopea Guerreros){
+                for(Loopea Armas){
+                    Aca metias los 3 ifs. Con sus respectivos comentarios.
+                }
+           }
+        * */
         ejercitoEquipado = new HashMap<>();
         for (int i = 0; i < listG.size(); i++) {
             if (listG.get(i).getClass() == Berzerker.class) {
                 for (int j = 0; j < listA.size(); j++) {
+                    // Te faltaria preguntar si ya tiene un arma el guerrero y se podria unificar con el if de arriba con un &&.
                     if (listA.get(j).getClass() == Espada.class) {
                         cargarArma(listG.get(i), listA.get(j));
                         ejercitoEquipado.put(listG.get(i), listA.get(j));
@@ -186,11 +198,15 @@ public class Metodos {
         Iterator<Guerrero> it = guerreroSinArma.iterator();
         System.out.println("Los siguientes guerreros quedaron sin armas:");
         for (int i = 0; i < guerreroSinArma.size(); i++) {
+            // Aca estas imprimiendo el nombre de la clase. Podrias haber hecho:
+            //System.out.println(it2.next().toString());
             System.out.println(it.next().getClass().getName());
         }
         Iterator<Arma> it2 = armaSinGuerrero.iterator();
         System.out.println("Los siguientes armas quedaron sin guerrero:");
         for (int i = 0; i < armaSinGuerrero.size(); i++) {
+            // Aca estas imprimiendo el nombre de la clase. Podrias haber hecho:
+            //System.out.println(it2.next().toString());
             System.out.println(it2.next().getClass().getName());
         }
     }

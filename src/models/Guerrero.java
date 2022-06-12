@@ -32,7 +32,7 @@ abstract public class Guerrero {
     }
 
     //Métodos
-
+    // Bien, esto se lo corregi a varios. Gratzie!
     abstract public double ataqueBasico();
 
 }
